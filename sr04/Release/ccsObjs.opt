@@ -1,6 +1,0 @@
-"./sr04.obj"
-"./startup_ccs.obj"
-"./utils/uartstdio.obj"
-"../sr04_ccs.cmd"
--l"/home/jithin/ti/TivaWare_C_Series-2.2.0.295/driverlib/ccs/Debug/driverlib.lib"
--llibc.a

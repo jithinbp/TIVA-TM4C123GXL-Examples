@@ -1,3 +1,7 @@
+# Ignore all Debug and Release folders everywhere
+**/Debug/
+**/Release/
+
 eawarm
 gcc
 rvmdk

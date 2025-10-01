@@ -55,11 +55,17 @@ Pick a simple example, check if it compiles (Ctrl-B) , and duplicate the folder 
 
 ## Examples
 
-+ adc_simple.c
-+ analog.c
-+ sr04.c
+### adc_simple.c
+
+### analog.c
+
+### sr04.c
+
+
 ![](img/sr04.jpeg)
-+ char16display.c
+
+### char16display.c
+
 ![](img/display.jpeg)
 
 
