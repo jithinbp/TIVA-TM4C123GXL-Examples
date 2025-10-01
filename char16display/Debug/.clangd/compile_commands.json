@@ -1,0 +1,17 @@
+[
+   {
+      "directory" : "/home/jithin/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c123gxl/adc_udma_pingpong/char16display/Debug",
+      "command"   : "clang++ -I\"/home/jithin/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c123gxl/adc_udma_pingpong/char16display\" -I\"/home/jithin/ti/TivaWare_C_Series-2.2.0.295\" -I\"/home/jithin/Downloads/ti-cgt-arm_20.2.7.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1 -xc",
+      "file"      : "/home/jithin/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c123gxl/adc_udma_pingpong/char16display/startup_ccs.c"
+   },
+   {
+      "directory" : "/home/jithin/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c123gxl/adc_udma_pingpong/char16display/Debug",
+      "command"   : "clang++ -I\"/home/jithin/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c123gxl/adc_udma_pingpong/char16display\" -I\"/home/jithin/ti/TivaWare_C_Series-2.2.0.295\" -I\"/home/jithin/Downloads/ti-cgt-arm_20.2.7.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1 -xc",
+      "file"      : "/home/jithin/ti/TivaWare_C_Series-2.2.0.295/utils/uartstdio.c"
+   },
+   {
+      "directory" : "/home/jithin/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c123gxl/adc_udma_pingpong/char16display/Debug",
+      "command"   : "clang++ -I\"/home/jithin/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c123gxl/adc_udma_pingpong/char16display\" -I\"/home/jithin/ti/TivaWare_C_Series-2.2.0.295\" -I\"/home/jithin/Downloads/ti-cgt-arm_20.2.7.LTS/include\" -Dccs=\"ccs\" -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1 -xc",
+      "file"      : "/home/jithin/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c123gxl/adc_udma_pingpong/char16display/char16display.c"
+   }
+]

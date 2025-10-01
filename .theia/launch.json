@@ -1,0 +1,41 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "adc_simple",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "adc_simple",
+                "resourceId": "/adc_simple"
+            }
+        },
+        {
+            "name": "sr04",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "sr04",
+                "resourceId": "/sr04"
+            }
+        },
+        {
+            "name": "analog_sensors",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "analog_sensors",
+                "resourceId": "/analog_sensors"
+            }
+        },
+        {
+            "name": "char16display",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "char16display",
+                "resourceId": "/char16display"
+            }
+        }
+    ]
+}
