@@ -54,7 +54,9 @@ Pick a simple example, check if it compiles (Ctrl-B) , and duplicate the folder 
 + adc_simple.c
 + analog.c
 + sr04.c
+![](img/sr04.jpeg)
 + char16display.c
+![](img/display.jpeg)
 
 
 
