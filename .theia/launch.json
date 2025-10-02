@@ -76,6 +76,17 @@
                             }
                         }
                     ]
+                },
+                {
+                    "name": "Stellaris In-Circuit Debug Interface_0",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M4_0",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
                 }
             ]
         },
@@ -175,6 +186,15 @@
                     ]
                 }
             ]
+        },
+        {
+            "name": "char16display_bmp180",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "char16display_bmp180",
+                "resourceId": "/char16display_bmp180"
+            }
         }
     ]
 }

@@ -27,6 +27,7 @@
 #include "driverlib/gpio.h"
 #include "driverlib/timer.h"
 #include "driverlib/adc.h"
+
 void ADCSeq0Handler(void) {}
 
 
@@ -103,16 +104,19 @@ void LCD_init(void) {
 }
 
 void LCD_setCursor(uint8_t row, uint8_t col) {
-    // DDRAM offsets for 16x4 LCD (HD44780)
-    static const uint8_t row_offsets[] = {0x00, 0x40, 0x10, 0x50};
+    // DDRAM offsets for a standard 20x4 LCD (RG2004A)
+    static const uint8_t row_offsets[] = {0x00, 0x40, 0x14, 0x54}; 
     
-    // Clamp row and column
+    // Clamp row (0-3)
     if (row > 3) row = 3;
-    if (col > 15) col = 15;  // assuming 16 columns
     
-    // Set DDRAM address
+    // Clamp column (0-19)
+    if (col > 19) col = 19; 
+    
+    // Set DDRAM address command (0x80 is the Set DDRAM Address instruction)
     LCD_command(0x80 | (row_offsets[row] + col));
 }
+
 void LCD_print(char *s) {
     while(*s) {
         LCD_data(*s++);
@@ -147,10 +151,12 @@ int main(void) {
     LCD_command(0x01); // Clear
     LCD_setCursor(0,0);
     LCD_print("HELLO THERE");
-    LCD_setCursor(0,1);
+    LCD_setCursor(1,0);
     LCD_print("ADC Demo");
 
     delay_ms(1500);
+    LCD_setCursor(1,0);
+    LCD_print("ADC Value:");
 
     while(1)
     {
@@ -166,10 +172,9 @@ int main(void) {
         ADCSequenceDataGet(ADC0_BASE, 3, &adcValue);
 
 
-        LCD_setCursor(0,1);
-        LCD_print("        ");
+        LCD_setCursor(2,0);
         // show result
-        snprintf(buffer, 16, "%3d ", adcValue);
+        snprintf(buffer, 11, "V: %3d ", adcValue);
         LCD_print(buffer);
 
         delay_ms(500);
