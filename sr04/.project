@@ -33,8 +33,12 @@
 	</linkedResources>
 	<variableList>
 		<variable>
+			<name>ORIGINAL_PROJECT_ROOT</name>
+			<value>$%7BCOM_TI_TM4C_INSTALL_DIR%7D/examples/boards/ek-tm4c123gxl/adc_udma_pingpong/sr04</value>
+		</variable>
+		<variable>
 			<name>SW_ROOT</name>
-			<value>$%7BPARENT-5-PROJECT_LOC%7D</value>
+			<value>$%7BPARENT-5-ORIGINAL_PROJECT_ROOT%7D</value>
 		</variable>
 	</variableList>
 </projectDescription>

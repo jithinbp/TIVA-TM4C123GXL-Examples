@@ -4,7 +4,7 @@
         <cconfiguration id="com.ti.ccstudio.buildDefinitions.TMS470.Debug.1424710480">
             <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.ti.ccstudio.buildDefinitions.TMS470.Debug.1424710480" moduleId="org.eclipse.cdt.core.settings" name="Debug">
                 <macros>
-                    <stringMacro name="SW_ROOT" type="VALUE_PATH_ANY" value="${PROJECT_LOC}/../../../../.."/>
+                    <stringMacro name="SW_ROOT" type="VALUE_PATH_ANY" value="${ORIGINAL_PROJECT_ROOT}/../../../../.."/>
                 </macros>
                 <externalSettings/>
                 <extensions>
@@ -28,10 +28,12 @@
                                 <listOptionValue value="CCS_MBS_VERSION=70.0.0"/>
                                 <listOptionValue value="RUNTIME_SUPPORT_LIBRARY=libc.a"/>
                                 <listOptionValue value="OUTPUT_TYPE=executable"/>
+                                <listOptionValue value="PRODUCTS=tm4c:2.2.0.295;"/>
+                                <listOptionValue value="PRODUCT_MACRO_IMPORTS={&quot;tm4c&quot;:[&quot;${COM_TI_TM4C_INCLUDE_PATH}&quot;,&quot;${COM_TI_TM4C_LIBRARY_PATH}&quot;,&quot;${COM_TI_TM4C_LIBRARIES}&quot;,&quot;${COM_TI_TM4C_SYMBOLS}&quot;,&quot;${COM_TI_TM4C_SYSCONFIG_MANIFEST}&quot;]}"/>
                             </option>
                             <option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.1190217347" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="18.12.2.LTS" valueType="string"/>
                             <targetPlatform id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.targetPlatformDebug.766355537" name="Platform" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.targetPlatformDebug"/>
-                            <builder buildPath="${BuildDirectory}" id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.builderDebug.759300504" name="GNU Make.Debug" parallelBuildOn="true" parallelizationNumber="optimal" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.builderDebug"/>
+                            <builder buildPath="${BuildDirectory}" id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.builderDebug.759300504" keepEnvironmentInBuildfile="false" name="GNU Make" parallelBuildOn="true" parallelizationNumber="optimal" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.builderDebug"/>
                             <tool id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.compilerDebug.989369203" name="ARM Compiler" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.compilerDebug">
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.SILICON_VERSION.1334667553" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.SILICON_VERSION" value="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.SILICON_VERSION.7M4" valueType="enumerated"/>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.CODE_STATE.159451657" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.CODE_STATE" value="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.CODE_STATE.16" valueType="enumerated"/>
@@ -39,6 +41,7 @@
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.FLOAT_SUPPORT.1188668330" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.FLOAT_SUPPORT" value="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.FLOAT_SUPPORT.FPv4SPD16" valueType="enumerated"/>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.GCC.190357363" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.GCC" value="true" valueType="boolean"/>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.DEFINE.111905646" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.DEFINE" valueType="definedSymbols">
+                                    <listOptionValue value="${COM_TI_TM4C_SYMBOLS}"/>
                                     <listOptionValue value="ccs=&quot;ccs&quot;"/>
                                     <listOptionValue value="PART_TM4C123GH6PM"/>
                                     <listOptionValue value="TARGET_IS_TM4C123_RB1"/>
@@ -50,6 +53,7 @@
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.DISPLAY_ERROR_NUMBER.2122757186" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.DIAG_WRAP.1551523079" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.DIAG_WRAP" value="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.DIAG_WRAP.off" valueType="enumerated"/>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.INCLUDE_PATH.814273873" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.INCLUDE_PATH" valueType="includePath">
+                                    <listOptionValue value="${COM_TI_TM4C_INCLUDE_PATH}"/>
                                     <listOptionValue value="${PROJECT_ROOT}"/>
                                     <listOptionValue value="${SW_ROOT}"/>
                                     <listOptionValue value="${CG_TOOL_ROOT}/include"/>
@@ -72,11 +76,13 @@
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.DISPLAY_ERROR_NUMBER.2073632299" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.DIAG_WRAP.576900693" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.DIAG_WRAP" value="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.DIAG_WRAP.off" valueType="enumerated"/>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.SEARCH_PATH.1428451092" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.SEARCH_PATH" valueType="libPaths">
+                                    <listOptionValue value="${COM_TI_TM4C_LIBRARY_PATH}"/>
                                     <listOptionValue value="${CG_TOOL_ROOT}/lib"/>
                                     <listOptionValue value="${CG_TOOL_ROOT}/include"/>
                                 </option>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.LIBRARY.1364082691" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.LIBRARY" valueType="libs">
-                                    <listOptionValue value="${SW_ROOT}/driverlib/ccs/Debug/driverlib.lib"/>
+                                    <listOptionValue value="${COM_TI_TM4C_LIBRARIES}"/>
+                                    <listOptionValue value="${PROJECT_LOC}/../driverlib/ccs/Debug/driverlib.lib"/>
                                     <listOptionValue value="libc.a"/>
                                 </option>
                                 <inputType id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exeLinker.inputType__CMD_SRCS.36100009" name="Linker Command Files" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exeLinker.inputType__CMD_SRCS"/>
@@ -93,7 +99,7 @@
         <cconfiguration id="com.ti.ccstudio.buildDefinitions.TMS470.Release.1879374491">
             <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.ti.ccstudio.buildDefinitions.TMS470.Release.1879374491" moduleId="org.eclipse.cdt.core.settings" name="Release">
                 <macros>
-                    <stringMacro name="SW_ROOT" type="VALUE_PATH_ANY" value="${PROJECT_LOC}/../../../../.."/>
+                    <stringMacro name="SW_ROOT" type="VALUE_PATH_ANY" value="${ORIGINAL_PROJECT_ROOT}/../../../../.."/>
                 </macros>
                 <externalSettings/>
                 <extensions>
@@ -117,10 +123,12 @@
                                 <listOptionValue value="CCS_MBS_VERSION=70.0.0"/>
                                 <listOptionValue value="RUNTIME_SUPPORT_LIBRARY=libc.a"/>
                                 <listOptionValue value="OUTPUT_TYPE=executable"/>
+                                <listOptionValue value="PRODUCTS=tm4c:2.2.0.295;"/>
+                                <listOptionValue value="PRODUCT_MACRO_IMPORTS={&quot;tm4c&quot;:[&quot;${COM_TI_TM4C_INCLUDE_PATH}&quot;,&quot;${COM_TI_TM4C_LIBRARY_PATH}&quot;,&quot;${COM_TI_TM4C_LIBRARIES}&quot;,&quot;${COM_TI_TM4C_SYMBOLS}&quot;,&quot;${COM_TI_TM4C_SYSCONFIG_MANIFEST}&quot;]}"/>
                             </option>
                             <option id="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION.1348353247" superClass="com.ti.ccstudio.buildDefinitions.core.OPT_CODEGEN_VERSION" value="18.12.2.LTS" valueType="string"/>
                             <targetPlatform id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.targetPlatformRelease.770245841" name="Platform" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.targetPlatformRelease"/>
-                            <builder buildPath="${BuildDirectory}" id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.builderRelease.1263956551" name="GNU Make.Release" parallelBuildOn="true" parallelizationNumber="optimal" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.builderRelease"/>
+                            <builder buildPath="${BuildDirectory}" id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.builderRelease.1263956551" keepEnvironmentInBuildfile="false" name="GNU Make" parallelBuildOn="true" parallelizationNumber="optimal" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.builderRelease"/>
                             <tool id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.compilerRelease.953203988" name="ARM Compiler" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.exe.compilerRelease">
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.SILICON_VERSION.1103871736" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.SILICON_VERSION" value="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.SILICON_VERSION.7M4" valueType="enumerated"/>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.CODE_STATE.420842772" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.CODE_STATE" value="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.CODE_STATE.16" valueType="enumerated"/>
@@ -128,6 +136,7 @@
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.FLOAT_SUPPORT.1200321234" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.FLOAT_SUPPORT" value="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.FLOAT_SUPPORT.FPv4SPD16" valueType="enumerated"/>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.GCC.1437050614" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.GCC" value="true" valueType="boolean"/>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.DEFINE.537466772" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.DEFINE" valueType="definedSymbols">
+                                    <listOptionValue value="${COM_TI_TM4C_SYMBOLS}"/>
                                     <listOptionValue value="ccs=&quot;ccs&quot;"/>
                                     <listOptionValue value="PART_TM4C123GH6PM"/>
                                     <listOptionValue value="TARGET_IS_TM4C123_RB1"/>
@@ -138,6 +147,7 @@
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.DISPLAY_ERROR_NUMBER.2059142274" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.DIAG_WRAP.606533982" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.DIAG_WRAP" value="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.DIAG_WRAP.off" valueType="enumerated"/>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.INCLUDE_PATH.69210187" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.compilerID.INCLUDE_PATH" valueType="includePath">
+                                    <listOptionValue value="${COM_TI_TM4C_INCLUDE_PATH}"/>
                                     <listOptionValue value="${PROJECT_ROOT}"/>
                                     <listOptionValue value="${SW_ROOT}"/>
                                     <listOptionValue value="${CG_TOOL_ROOT}/include"/>
@@ -159,10 +169,12 @@
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.DISPLAY_ERROR_NUMBER.653639361" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.DISPLAY_ERROR_NUMBER" value="true" valueType="boolean"/>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.DIAG_WRAP.1555702850" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.DIAG_WRAP" value="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.DIAG_WRAP.off" valueType="enumerated"/>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.SEARCH_PATH.1209897659" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.SEARCH_PATH" valueType="libPaths">
+                                    <listOptionValue value="${COM_TI_TM4C_LIBRARY_PATH}"/>
                                     <listOptionValue value="${CG_TOOL_ROOT}/lib"/>
                                     <listOptionValue value="${CG_TOOL_ROOT}/include"/>
                                 </option>
                                 <option id="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.LIBRARY.633499315" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.12.linkerID.LIBRARY" valueType="libs">
+                                    <listOptionValue value="${COM_TI_TM4C_LIBRARIES}"/>
                                     <listOptionValue value="${SW_ROOT}/driverlib/ccs/Debug/driverlib.lib"/>
                                     <listOptionValue value="libc.a"/>
                                 </option>

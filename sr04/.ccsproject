@@ -12,4 +12,5 @@
 	<filesToOpen value=""/>
 	<activeTargetConfiguration value="target_config.ccxml"/>
 	<isTargetConfigurationManual value="true"/>
+	<origin value="/home/jithin/ti/TivaWare_C_Series-2.2.0.295/examples/boards/ek-tm4c123gxl/adc_udma_pingpong/sr04"/>
 </projectOptions>

@@ -53,6 +53,30 @@ chmod +x ./ti_cgt_tms470_20.2.7.LTS_linux-x64_installer.bin
 Pick a simple example, check if it compiles (Ctrl-B) , and duplicate the folder marked `Debug` in the file explorer on the left. If it does not, ensure all libraries are linked. This folder is meant to exist inside the ti-launchpad examples downloaded earlier. Check the screenshot below and modify your project properties accordingly. To open this, right click on the example folder marked `debug`, and select `properties`
 ![](img/include.png)
 
+## Local debugger (Avoiding cloud)
+
+```bash
+user:/opt/ccs/ccs/ccs/ccs_base/common/uscif/xds110$ sudo ./xdsdfu -e
+
+USB Device Firmware Upgrade Utility
+Copyright (c) 2008-2019 Texas Instruments Incorporated.  All rights reserved.
+
+Scanning USB buses for supported XDS110 devices...
+
+
+<<<< Device 0 >>>>
+
+VID: 0x1cbe    PID: 0x00fd
+Device Name:   In-Circuit Debug Interface
+Manufacturer:  Texas Instruments
+Serial Num:    0E23BC2B
+Mode:          Runtime
+Configuration: Unknown
+
+Found 1 device.
+```
+
+
 ## Examples
 
 ### adc_simple.c
@@ -65,6 +89,8 @@ Pick a simple example, check if it compiles (Ctrl-B) , and duplicate the folder 
 ![](img/sr04.jpeg)
 
 ### char16display.c
+
+V0 - Contrast pin. 1.84 Volts. Use a potentiometer to set.
 
 ![](img/display.jpeg)
 

@@ -2,13 +2,113 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "blinky",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "blinky",
+                "resourceId": "/blinky"
+            },
+            "connections": [
+                {
+                    "name": "Stellaris In-Circuit Debug Interface_0",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M4_0",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Stellaris In-Circuit Debug Interface",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M4_0",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "hello",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "hello",
+                "resourceId": "/hello"
+            },
+            "connections": [
+                {
+                    "name": "Stellaris In-Circuit Debug Interface_0",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M4_0",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "char16display_analog_sensors",
+            "type": "ccs-debug",
+            "request": "launch",
+            "noDisconnectOnProgramLoad": true,
+            "projectInfo": {
+                "name": "char16display_analog_sensors",
+                "resourceId": "/char16display_analog_sensors"
+            },
+            "connections": [
+                {
+                    "name": "Stellaris In-Circuit Debug Interface",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M4_0",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "uart_echo",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "uart_echo",
+                "resourceId": "/uart_echo"
+            }
+        },
+        {
             "name": "adc_simple",
             "type": "ccs-debug",
             "request": "launch",
             "projectInfo": {
                 "name": "adc_simple",
                 "resourceId": "/adc_simple"
-            }
+            },
+            "connections": [
+                {
+                    "name": "Stellaris In-Circuit Debug Interface_0",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M4_0",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
         },
         {
             "name": "sr04",
@@ -17,7 +117,42 @@
             "projectInfo": {
                 "name": "sr04",
                 "resourceId": "/sr04"
-            }
+            },
+            "connections": [
+                {
+                    "name": "Stellaris In-Circuit Debug Interface_0",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M4_0",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "char16display (1)",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "char16display",
+                "resourceId": "/char16display"
+            },
+            "connections": [
+                {
+                    "name": "Stellaris In-Circuit Debug Interface_0",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M4_0",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
         },
         {
             "name": "analog_sensors",
@@ -26,16 +161,20 @@
             "projectInfo": {
                 "name": "analog_sensors",
                 "resourceId": "/analog_sensors"
-            }
-        },
-        {
-            "name": "char16display",
-            "type": "ccs-debug",
-            "request": "launch",
-            "projectInfo": {
-                "name": "char16display",
-                "resourceId": "/char16display"
-            }
+            },
+            "connections": [
+                {
+                    "name": "Stellaris In-Circuit Debug Interface_0",
+                    "cores": [
+                        {
+                            "name": "CORTEX_M4_0",
+                            "debuggerSettings": {
+                                "data": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\" ?>\n<PropertyValues/>\n"
+                            }
+                        }
+                    ]
+                }
+            ]
         }
     ]
 }
