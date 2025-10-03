@@ -1,0 +1,94 @@
+site_name: TM4C123GXL dev board examples
+theme:
+  name: 'material'
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: teal
+      accent: amber
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  logo: images/kuttypy.png
+  favicon: 'images/favicon.png'
+  features:
+    - navigation.footer
+    - content.code.copy
+  icon:
+    annotation: material/arrow-right-circle 
+ 
+
+#theme: 'readthedocs'
+markdown_extensions:
+    - toc:
+        permalink: True
+    - admonition
+    - smarty
+    - attr_list
+    - wikilinks
+    - codehilite:
+        linenums: False
+    - pymdownx.arithmatex
+    - pymdownx.betterem:
+        smart_enable: all
+    - pymdownx.caret
+    - pymdownx.critic
+    - pymdownx.details
+    - pymdownx.inlinehilite
+    - pymdownx.magiclink
+    - pymdownx.mark
+    - pymdownx.smartsymbols
+    - pymdownx.superfences:
+       preserve_tabs: true
+    - pymdownx.tabbed:
+        alternate_style: true
+    - pymdownx.tasklist:
+        custom_checkbox: True
+    - pymdownx.tilde
+
+extra_css: ["assets/main.css"]
+site_favicon: 'images/favicon.ico'
+
+extra:
+  palette:
+      primary: '#087da1'
+      accent: '#00a889'
+  generator: false
+  social:
+    - icon: fontawesome/brands/twitter 
+      link: https://x.com/csparkresearch
+    - icon: fontawesome/brands/instagram
+      link: https://instagram.com/csparkresearch
+    - icon: fontawesome/brands/github
+      link: https://github.com/csparkresearch
+
+
+plugins:
+   - search
+   - table-reader
+   - material/social:
+      cards: true
+      cards_font: Roboto
+   #- page-to-pdf
+
+
+repo_name: 'jithinbp/TIVA-TM4C123GXL-Examples'
+repo_url: 'https://github.com/jithinbp/TIVA-TM4C123GXL-Examples/'
+copyright: 'Copyright © 2025 <a href="https://jithinbp.in">Jithin B.P.</a>'
+
+#google_analytics:
+#  - 'UA-67472997-4'
+#  - 'auto'
+
+nav:
+  - Home: 'index.md'
+  - Sensors 37 in 1: 'sensors37.html'
+  - I/O and Peripherals:
+      - 'Basic I/O': 'index.md'
+  - I2C Sensors: 'sensors.md'

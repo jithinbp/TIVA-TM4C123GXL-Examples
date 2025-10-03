@@ -1,0 +1,37 @@
+sensor_name,xmin,ymin,xmax,ymax,category
+Joystick,50,50,200,200,Input
+Flame,210,50,360,200,Environment
+RGB LED,370,50,520,200,Light & Vision
+Heartbeat,530,50,680,200,Biometric
+Light Cup,690,50,840,200,Light & Vision
+Hall Magnetic,850,50,1000,200,Magnetic
+Relay,50,210,200,360,Output
+Linear Hall,210,210,360,360,Magnetic
+SMD RGB,370,210,520,360,Light & Vision
+7 color flash,530,210,680,360,Light & Vision
+Tilt switch,690,210,840,360,Motion & Position
+TEMP 18B20,850,210,1000,360,Environment
+Big sound,50,370,200,520,Sound
+Touch,210,370,360,520,Input
+Two-color LED,370,370,520,520,Light & Vision
+Laser emit,530,370,680,520,Light & Vision
+Ball switch,690,370,840,520,Motion & Position
+Analog temp,850,370,1000,520,Environment
+Small sound,50,530,200,680,Sound
+Digital temp,210,530,360,680,Environment
+Two-color,370,530,520,680,Light & Vision
+Button,530,530,680,680,Input
+Photoresistor,690,530,840,680,Light & Vision
+IR emission,850,530,1000,680,Infrared
+Tracking,50,690,200,840,Infrared
+Buzzer,210,690,360,840,Sound
+Reed switch,370,690,520,840,Magnetic
+Shock,530,690,680,840,Motion & Position
+Temp and humidity,690,690,840,840,Environment
+IR receiver,850,690,1000,840,Infrared
+Avoid,50,850,200,1000,Infrared
+Passive buzzer,210,850,360,1000,Sound
+Mini Reed,370,850,520,1000,Magnetic
+Rotary encoder,530,850,680,1000,Input
+Analog Hall,690,850,840,1000,Magnetic
+Tap module (Light blocking),850,850,1000,1000,Motion & Position

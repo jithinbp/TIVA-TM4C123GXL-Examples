@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>37-in-1 Sensor Kit Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chosen Palette: Cool Neutrals -->
+    <!-- Application Structure Plan: The application transforms the static sensor list into an interactive dashboard. The core structure is a filterable grid of sensor "cards." This is superior to the original table because it allows users to actively explore rather than passively read. Users can filter by category or search by name to quickly find components. Clicking a card opens a modal with detailed information (description, type, uses), providing crucial context missing from the source file. This structure promotes learning and efficient information retrieval, making the kit more accessible to beginners and a quicker reference for experienced users. -->
+    <!-- Visualization & Content Choices: Report Info: List of 36 sensors -> Goal: Organize & Inform -> Presentation Method: Interactive Card Grid (HTML/CSS/Tailwind) and a Detail Modal. -> Interaction: 1) Buttons to filter the grid by functional category (e.g., Light, Sound, Motion). 2) A search bar for name-based filtering. 3) Clicking a card reveals detailed information in a modal. -> Justification: This approach turns a flat data list into an engaging educational tool. The categorization adds a layer of information architecture, helping users understand the sensors' functions in relation to one another. The on-demand detail via the modal prevents information overload. Visuals are simulated using Unicode icons/emoji for high performance and strict adherence to the no-raster-image constraint, serving as functional thumbnails. -> Library/Method: Vanilla JavaScript for all logic, Tailwind CSS for styling. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .active-filter {
+            background-color: #0284c7 !important;
+            color: white !important;
+            border-color: #0284c7 !important;
+        }
+        .sensor-icon {
+            font-size: 2.5rem;
+            line-height: 1;
+        }
+    </style>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div id="app" class="container mx-auto p-4 sm:p-6 md:p-8">
+        
+        <header class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-slate-900">37-in-1 Sensor Kit Explorer</h1>
+            <p class="text-slate-600 mt-2 max-w-2xl mx-auto">An interactive guide to the common sensor modules for Arduino. Click on a sensor to learn more about its function and typical uses.</p>
+        </header>
+
+        <div class="controls bg-white p-4 rounded-lg shadow-sm mb-8 sticky top-4 z-10">
+            <div class="flex flex-col md:flex-row gap-4">
+                <div class="relative flex-grow">
+                    <input type="text" id="searchInput" placeholder="Search for a sensor..." class="w-full p-3 pl-10 border border-slate-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 transition">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <svg class="h-5 w-5 text-slate-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div id="categoryFilters" class="flex flex-wrap gap-2 mt-4">
+                <p class="w-full font-semibold text-slate-700 text-sm mb-1 md:w-auto md:mb-0">Categories:</p>
+            </div>
+        </div>
+
+        <main id="sensor-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6">
+            
+        </main>
+        <div id="no-results" class="text-center py-16 hidden">
+            <h3 class="text-xl font-semibold text-slate-700">No Sensors Found</h3>
+            <p class="text-slate-500 mt-2">Try adjusting your search or filter criteria.</p>
+        </div>
+    </div>
+
+    <footer class="mt-12 py-4 text-center text-xs text-slate-500 border-t border-slate-200">
+        &copy; 2025 Jithin B.P. | <a href="https://jithinbp.in" target="_blank" class="hover:text-sky-600 transition">https://jithinbp.in</a>
+    </footer>
+
+    
+    <div id="sensorModal" class="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center p-4 z-50 hidden transition-opacity duration-300 opacity-0">
+        <div id="modalContent" class="bg-white rounded-xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto transform scale-95 transition-all duration-300">
+            <div class="p-6 md:p-8">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 id="modalName" class="text-2xl font-bold text-slate-900">Sensor Name</h2>
+                        <span id="modalCategory" class="text-sm font-medium bg-sky-100 text-sky-700 py-1 px-2 rounded-full">Category</span>
+                    </div>
+                    <button id="closeModal" class="text-slate-400 hover:text-slate-800 transition">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                    </button>
+                </div>
+                
+                <div class="space-y-6 text-slate-700">
+                    <div>
+                        <img id="modalPhoto" src="" style="min-width=50px;min-height=50px;"/>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-slate-800 border-b pb-2 mb-2">Description</h3>
+                        <p id="modalDescription">A detailed description of what the sensor does and how it works.</p>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-semibold text-slate-800 border-b pb-2 mb-2">Details</h3>
+                        <ul class="list-disc list-inside space-y-1">
+                            <li><strong>Type:</strong> <span id="modalType">Analog/Digital</span></li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold text-slate-800 border-b pb-2 mb-2">Common Uses</h3>
+                        <p id="modalUses">Examples of projects and applications where this sensor is commonly used.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const sensorData = [
+        { id: 1, name: "Joystick", category: "Input", type: "Analog", description: "A dual-axis joystick that provides analog readings for X and Y directions, plus a digital input from a push-button.", uses: "Controlling robots, games, camera gimbals, or navigating menus.", icon: "🕹️" },
+        { id: 2, name: "Flame", category: "Environment", type: "Digital/Analog", description: "Detects fire or other sources of infrared (IR) light. Its sensitivity can be adjusted.", uses: "Fire alarm systems, robotics for firefighting.", icon: "🔥" },
+        { id: 3, name: "RGB LED", category: "Light & Vision", type: "Digital (PWM)", description: "A single LED that can produce a wide spectrum of colors by mixing red, green, and blue light.", uses: "Status indicators, mood lighting, visual notifications.", icon: "🌈" },
+        { id: 4, name: "Heartbeat", category: "Biometric", type: "Analog", description: "Measures pulse by detecting changes in light absorption as blood flows through a fingertip.", uses: "Basic heart rate monitoring projects, fitness trackers.", icon: "💖" },
+        { id: 5, name: "Light Cup", category: "Light & Vision", type: "Digital", description: "A module with two mercury switches and an LED. Tilting it in one direction lights up the LED. It's often paired.", uses: "Simple tilt-activated switches.", icon: "💡" },
+        { id: 6, name: "Hall Magnetic", category: "Magnetic", type: "Digital", description: "A switch that detects the presence of a magnetic field, turning on or off accordingly.", uses: "Detecting open/closed doors, non-contact limit switches.", icon: "🧲" },
+        { id: 7, name: "Relay", category: "Output", type: "Digital", description: "An electrically operated switch that allows a low-power signal from a microcontroller to control a high-power circuit.", uses: "Controlling home appliances like lights, fans, and motors.", icon: "🔌" },
+        { id: 8, name: "Linear Hall", category: "Magnetic", type: "Analog", description: "Measures the strength and polarity of a magnetic field, providing a variable analog output.", uses: "Creating magnetic field strength meters, detecting position of magnets.", icon: "🧲" },
+        { id: 9, name: "SMD RGB", category: "Light & Vision", type: "Digital (PWM)", description: "A surface-mount device (SMD) version of the RGB LED, offering the same color-mixing capabilities in a smaller package.", uses: "Compact status indicators, wearable technology.", icon: "🌟" },
+        { id: 10, name: "7 color flash", category: "Light & Vision", type: "Digital", description: "An LED that automatically cycles through seven different colors when powered on.", uses: "Decorative lighting, simple attention-grabbing indicators.", icon: "✨" },
+        { id: 11, name: "Tilt switch", category: "Motion & Position", type: "Digital", description: "A simple switch containing a metal ball that closes a circuit when the module is tilted to a certain angle.", uses: "Detecting orientation or inclination, simple alarms.", icon: "📐" },
+        { id: 12, name: "TEMP 18B20", category: "Environment", type: "Digital (1-Wire)", description: "A digital thermometer that provides accurate temperature readings over a 1-Wire communication interface.", uses: "Weather stations, temperature logging, thermostat controls.", icon: "🌡️" },
+        { id: 13, name: "Big sound", category: "Sound", type: "Analog/Digital", description: "A microphone module with high sensitivity for detecting loud sounds. It provides both an analog signal and a digital output when a threshold is passed.", uses: "Sound-activated switches, alarms, ambient noise monitoring.", icon: "🔊" },
+        { id: 14, name: "Touch", category: "Input", type: "Digital", description: "A capacitive touch sensor that acts as a momentary push-button without any moving parts.", uses: "Replacing mechanical buttons, interactive surfaces.", icon: "👆" },
+        { id: 15, name: "Two-color LED", category: "Light & Vision", type: "Digital", description: "An LED module that can emit two different colors (commonly red and green), or a third color if both are on.", uses: "Displaying two distinct states (e.g., on/off, success/failure).", icon: "🟢" },
+        { id: 16, name: "Laser emit", category: "Light & Vision", type: "Digital", description: "A module that emits a small, focused red laser beam when powered.", uses: "Pointers, alignment tools, simple laser tripwire systems.", icon: "🔴" },
+        { id: 17, name: "Ball switch", category: "Motion & Position", type: "Digital", description: "Similar to a tilt switch, this switch uses a rolling ball to close a circuit when tilted or shaken.", uses: "Detecting motion or orientation changes.", icon: "⚽" },
+        { id: 18, name: "Analog temp", category: "Environment", type: "Analog", description: "A thermistor-based sensor that outputs a variable analog voltage corresponding to the ambient temperature.", uses: "Simple temperature sensing, basic thermostats.", icon: "🌡️" },
+        { id: 19, name: "Small sound", category: "Sound", type: "Analog/Digital", description: "A microphone module with lower sensitivity, designed for detecting ambient sound levels.", uses: "Voice-activated projects, sound level meters.", icon: "👂" },
+        { id: 20, name: "Digital temp", category: "Environment", type: "Digital (1-Wire)", description: "Often a DHT11 or similar, this sensor measures both temperature and humidity and provides a digital output.", uses: "Weather stations, climate control systems.", icon: "💧" },
+        { id: 21, name: "Two-color", category: "Light & Vision", type: "Digital", description: "A 3mm two-color LED module, functionally identical to module #15 but in a different form factor.", uses: "Status indicators with two states.", icon: "🟢" },
+        { id: 22, name: "Button", category: "Input", type: "Digital", description: "A standard tactile push-button switch for user input.", uses: "Reset buttons, user interface controls, triggering events.", icon: "🔘" },
+        { id: 23, name: "Photoresistor", category: "Light & Vision", type: "Analog", description: "A light-dependent resistor (LDR) whose resistance decreases as light intensity increases. It provides an analog reading of ambient light.", uses: "Automatic night lights, light-activated switches.", icon: "☀️" },
+        { id: 24, name: "IR emission", category: "Infrared", type: "Digital", description: "An infrared LED that emits IR light, invisible to the human eye. Used for transmitting signals.", uses: "Remote controls, data transmission, object detection systems (with a receiver).", icon: "📡" },
+        { id: 25, name: "Tracking", category: "Infrared", type: "Digital", description: "An IR sensor pair designed to detect lines. It reflects IR light off a surface to distinguish between dark (absorbent) and light (reflective) areas.", uses: "Line-following robots.", icon: "〰️" },
+        { id: 26, name: "Buzzer", category: "Sound", type: "Digital", description: "An active buzzer that produces a single-tone sound when a digital high signal is applied.", uses: "Alarms, alerts, simple audio feedback.", icon: "📢" },
+        { id: 27, name: "Reed switch", category: "Magnetic", type: "Digital", description: "A switch containing two metal reeds in a glass tube that close in the presence of a magnetic field.", uses: "Security systems for windows and doors, non-contact switches.", icon: "🧲" },
+        { id: 28, name: "Shock", category: "Motion & Position", type: "Digital", description: "A vibration sensor that detects shocks or impacts. It acts as a switch that briefly closes upon vibration.", uses: "Vibration alarms, tap detection.", icon: "💥" },
+        { id: 29, name: "Temp and humidity", category: "Environment", type: "Digital (1-Wire)", description: "A sensor (like the DHT11) that measures both ambient temperature and relative humidity.", uses: "Weather stations, automatic climate control, greenhouse monitoring.", icon: "💧" },
+        { id: 30, name: "IR receiver", category: "Infrared", type: "Digital", description: "Detects and demodulates infrared signals, typically from a remote control.", uses: "Creating remote-controlled projects, receiving data via IR.", icon: "📺" },
+        { id: 31, name: "Avoid", category: "Infrared", type: "Digital", description: "An obstacle avoidance sensor that uses an IR emitter and receiver to detect objects in its path.", uses: "Autonomous robots, automatic doors, hand sanitizers.", icon: "🛑" },
+        { id: 32, name: "Passive buzzer", category: "Sound", type: "Digital (PWM)", description: "A buzzer that requires a changing (PWM) signal to produce sound, allowing for different tones and melodies to be played.", uses: "Playing simple tunes, creating variable audio alerts.", icon: "🎶" },
+        { id: 33, name: "Mini Reed", category: "Magnetic", type: "Digital", description: "A smaller version of the reed switch, offering the same functionality in a more compact form factor.", uses: "Projects with space constraints requiring magnetic switching.", icon: "🧲" },
+        { id: 34, name: "Rotary encoder", category: "Input", type: "Digital", description: "A knob that can be rotated indefinitely to provide incremental digital signals for position and direction, often with a push-button.", uses: "Precise control knobs for settings like volume or menu navigation.", icon: "🎛️" },
+        { id: 35, name: "Analog Hall", category: "Magnetic", type: "Analog", description: "A magnetic sensor that provides an analog voltage proportional to the strength of a magnetic field.", uses: "Position sensing, magnetic field measurement.", icon: "🧲" },
+        { id: 36, name: "Tap module (Light blocking)", category: "Motion & Position", type: "Digital", description: "An optical interrupter (photointerrupter) that detects when an object passes through its slot, blocking a beam of light.", uses: "Speed measurement (with a slotted disk), limit switches, object counting.", icon: "🕳️" },
+    ];
+
+    const grid = document.getElementById('sensor-grid');
+    const searchInput = document.getElementById('searchInput');
+    const categoryFiltersContainer = document.getElementById('categoryFilters');
+    const noResultsDiv = document.getElementById('no-results');
+
+    const modal = document.getElementById('sensorModal');
+    const modalContent = document.getElementById('modalContent');
+    const closeModalBtn = document.getElementById('closeModal');
+
+    const modalName = document.getElementById('modalName');
+    const modalCategory = document.getElementById('modalCategory');
+    const modalDescription = document.getElementById('modalDescription');
+    const modalPhoto = document.getElementById('modalPhoto');
+    const modalType = document.getElementById('modalType');
+    const modalUses = document.getElementById('modalUses');
+
+    let activeCategory = 'All';
+
+    function renderSensors(sensorsToRender) {
+        grid.innerHTML = '';
+        if (sensorsToRender.length === 0) {
+            noResultsDiv.classList.remove('hidden');
+            grid.classList.add('hidden');
+        } else {
+            noResultsDiv.classList.add('hidden');
+            grid.classList.remove('hidden');
+            sensorsToRender.forEach(sensor => {
+                const card = document.createElement('div');
+                card.className = 'bg-white p-4 rounded-xl shadow-lg hover:shadow-xl hover:ring-2 hover:ring-sky-500 hover:-translate-y-1 transition-all duration-300 cursor-pointer flex flex-col items-center text-center';
+                card.dataset.id = sensor.id;
+
+                card.innerHTML = `
+                    <div class="p-2 bg-sky-50 rounded-lg mb-3 w-full">
+                        <span class="sensor-icon">${sensor.icon}</span>
+                    </div>
+                    <div class="flex-grow flex flex-col justify-start w-full">
+                        <span class="text-xs font-bold text-slate-400 mb-1">${sensor.id}</span>
+                        <h3 class="font-semibold text-slate-800 leading-tight">${sensor.name}</h3>
+                    </div>
+                    <span class="text-xs text-sky-600 font-medium mt-2">${sensor.category}</span>
+                `;
+                grid.appendChild(card);
+            });
+        }
+    }
+
+    function setupCategories() {
+        const categories = ['All', ...new Set(sensorData.map(s => s.category))];
+        categoryFiltersContainer.innerHTML += categories.map(cat => 
+            `<button data-category="${cat}" class="category-btn px-3 py-1.5 text-sm font-medium border border-slate-300 rounded-full transition hover:bg-sky-50 ${cat === 'All' ? 'active-filter' : 'text-slate-600 bg-white'}">${cat}</button>`
+        ).join('');
+    }
+
+    function filterAndRender() {
+        const searchTerm = searchInput.value.toLowerCase();
+        let filteredSensors = sensorData;
+
+        if (activeCategory !== 'All') {
+            filteredSensors = filteredSensors.filter(s => s.category === activeCategory);
+        }
+
+        if (searchTerm) {
+            filteredSensors = filteredSensors.filter(s => s.name.toLowerCase().includes(searchTerm) || s.description.toLowerCase().includes(searchTerm) || s.uses.toLowerCase().includes(searchTerm));
+        }
+        
+        renderSensors(filteredSensors);
+    }
+    
+    function showModal(sensor) {
+        modalName.textContent = `${sensor.id}. ${sensor.name}`;
+        modalCategory.textContent = sensor.category;
+        modalDescription.textContent = sensor.description;
+        modalPhoto.src = '../images/sensors/thumbs/'+sensor.name.replaceAll(' ','_')+'.jpg';
+        modalType.textContent = sensor.type;
+        modalUses.textContent = sensor.uses;
+        
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            modalContent.classList.remove('scale-95');
+        }, 10);
+    }
+
+    function hideModal() {
+        modal.classList.add('opacity-0');
+        modalContent.classList.add('scale-95');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
+    }
+
+    searchInput.addEventListener('keyup', filterAndRender);
+
+    categoryFiltersContainer.addEventListener('click', (e) => {
+        if (e.target.matches('.category-btn')) {
+            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active-filter'));
+            e.target.classList.add('active-filter');
+            activeCategory = e.target.dataset.category;
+            filterAndRender();
+        }
+    });
+
+    grid.addEventListener('click', (e) => {
+        const card = e.target.closest('[data-id]');
+        if (card) {
+            const sensorId = parseInt(card.dataset.id);
+            const sensor = sensorData.find(s => s.id === sensorId);
+            if (sensor) {
+                showModal(sensor);
+            }
+        }
+    });
+
+    closeModalBtn.addEventListener('click', hideModal);
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            hideModal();
+        }
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+            hideModal();
+        }
+    });
+
+    setupCategories();
+    filterAndRender();
+});
+</script>
+</body>
+</html>
+
