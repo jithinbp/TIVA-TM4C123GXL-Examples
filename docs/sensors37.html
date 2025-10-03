@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalName.textContent = `${sensor.id}. ${sensor.name}`;
         modalCategory.textContent = sensor.category;
         modalDescription.textContent = sensor.description;
-        modalPhoto.src = '../images/sensors/thumbs/'+sensor.name.replaceAll(' ','_')+'.jpg';
+        modalPhoto.src = './images/sensors/thumbs/'+sensor.name.replaceAll(' ','_')+'.jpg';
         modalType.textContent = sensor.type;
         modalUses.textContent = sensor.uses;
         
