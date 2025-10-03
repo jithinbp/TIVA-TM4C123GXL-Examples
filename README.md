@@ -47,10 +47,10 @@ chmod +x ./ti_cgt_tms470_20.2.7.LTS_linux-x64_installer.bin
 
 [Discover](https://software-dl.ti.com/ccs/esd/documents/ccs_compiler-installation-selection.html#compiler-discovery) it in File->Preferences-> Code Composer Studio settings -> Compilers -> Discovered Compilers
 
-![](img/compiler.png)
+![](docs/images/compiler.png)
 
 Pick a simple example, check if it compiles (Ctrl-B) , and duplicate the folder marked `Debug` in the file explorer on the left. If it does not, ensure all libraries are linked. This folder is meant to exist inside the ti-launchpad examples downloaded earlier. Check the screenshot below and modify your project properties accordingly. To open this, right click on the example folder marked `debug`, and select `properties`
-![](img/include.png)
+![](docs/images/include.png)
 
 ## Local debugger (Avoiding cloud)
 
@@ -82,21 +82,21 @@ Found 1 device.
 
 ### char16display_analog_in.c
 
-![](img/ADC.jpeg)
+![](docs/images/ADC.jpeg)
 
 ### sr04.c
 
-![](img/sr04.jpeg)
+![](docs/images/sr04.jpeg)
 
 ### char16display_bmp180.c
 
-![](img/BMP180.webp)
+![](docs/images/BMP180.webp)
 
 ### char16display.c
 
 V0 - Contrast pin. 1.84 Volts. Use a potentiometer to set.
 
-![](img/display.jpeg)
+![](docs/images/display.jpeg)
 
 
 

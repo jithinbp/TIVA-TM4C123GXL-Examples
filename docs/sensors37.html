@@ -5,10 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>37-in-1 Sensor Kit Explorer</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Chosen Palette: Cool Neutrals -->
-    <!-- Application Structure Plan: The application transforms the static sensor list into an interactive dashboard. The core structure is a filterable grid of sensor "cards." This is superior to the original table because it allows users to actively explore rather than passively read. Users can filter by category or search by name to quickly find components. Clicking a card opens a modal with detailed information (description, type, uses), providing crucial context missing from the source file. This structure promotes learning and efficient information retrieval, making the kit more accessible to beginners and a quicker reference for experienced users. -->
-    <!-- Visualization & Content Choices: Report Info: List of 36 sensors -> Goal: Organize & Inform -> Presentation Method: Interactive Card Grid (HTML/CSS/Tailwind) and a Detail Modal. -> Interaction: 1) Buttons to filter the grid by functional category (e.g., Light, Sound, Motion). 2) A search bar for name-based filtering. 3) Clicking a card reveals detailed information in a modal. -> Justification: This approach turns a flat data list into an engaging educational tool. The categorization adds a layer of information architecture, helping users understand the sensors' functions in relation to one another. The on-demand detail via the modal prevents information overload. Visuals are simulated using Unicode icons/emoji for high performance and strict adherence to the no-raster-image constraint, serving as functional thumbnails. -> Library/Method: Vanilla JavaScript for all logic, Tailwind CSS for styling. -->
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -33,7 +29,7 @@
         
         <header class="text-center mb-8">
             <h1 class="text-3xl md:text-4xl font-bold text-slate-900">37-in-1 Sensor Kit Explorer</h1>
-            <p class="text-slate-600 mt-2 max-w-2xl mx-auto">An interactive guide to the common sensor modules for Arduino. Click on a sensor to learn more about its function and typical uses.</p>
+            <p class="text-slate-600 mt-2 max-w-2xl mx-auto">An interactive guide to the common sensor modules for Arduino/SEELab3/ExpEYES/TI. Click on a sensor to learn more about its function and typical uses.</p>
         </header>
 
         <div class="controls bg-white p-4 rounded-lg shadow-sm mb-8 sticky top-4 z-10">
@@ -111,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 1, name: "Joystick", category: "Input", type: "Analog", description: "A dual-axis joystick that provides analog readings for X and Y directions, plus a digital input from a push-button.", uses: "Controlling robots, games, camera gimbals, or navigating menus.", icon: "🕹️" },
         { id: 2, name: "Flame", category: "Environment", type: "Digital/Analog", description: "Detects fire or other sources of infrared (IR) light. Its sensitivity can be adjusted.", uses: "Fire alarm systems, robotics for firefighting.", icon: "🔥" },
         { id: 3, name: "RGB LED", category: "Light & Vision", type: "Digital (PWM)", description: "A single LED that can produce a wide spectrum of colors by mixing red, green, and blue light.", uses: "Status indicators, mood lighting, visual notifications.", icon: "🌈" },
-        { id: 4, name: "Heartbeat", category: "Biometric", type: "Analog", description: "Measures pulse by detecting changes in light absorption as blood flows through a fingertip.", uses: "Basic heart rate monitoring projects, fitness trackers.", icon: "💖" },
+        { id: 4, name: "Heartbeat", category: "Light & Vision", type: "Analog", description: "Measures pulse by detecting changes in light absorption as blood flows through a fingertip.", uses: "Basic heart rate monitoring projects, fitness trackers.", icon: "💖" },
         { id: 5, name: "Light Cup", category: "Light & Vision", type: "Digital", description: "A module with two mercury switches and an LED. Tilting it in one direction lights up the LED. It's often paired.", uses: "Simple tilt-activated switches.", icon: "💡" },
         { id: 6, name: "Hall Magnetic", category: "Magnetic", type: "Digital", description: "A switch that detects the presence of a magnetic field, turning on or off accordingly.", uses: "Detecting open/closed doors, non-contact limit switches.", icon: "🧲" },
         { id: 7, name: "Relay", category: "Output", type: "Digital", description: "An electrically operated switch that allows a low-power signal from a microcontroller to control a high-power circuit.", uses: "Controlling home appliances like lights, fans, and motors.", icon: "🔌" },
@@ -179,11 +175,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 card.innerHTML = `
                     <div class="p-2 bg-sky-50 rounded-lg mb-3 w-full">
-                        <span class="sensor-icon">${sensor.icon}</span>
+                        <img src="${'./images/sensors/thumbs/'+sensor.name.replaceAll(' ','_')+'.jpg'}"/>
                     </div>
                     <div class="flex-grow flex flex-col justify-start w-full">
-                        <span class="text-xs font-bold text-slate-400 mb-1">${sensor.id}</span>
+						<div class="p-2 bg-sky-50 rounded-lg mb-3 w-full">
+							<span class="text-xs font-bold text-slate-400 mb-1">${sensor.id}</span>
+							<span class="sensor-icon">${sensor.icon}</span>
                         <h3 class="font-semibold text-slate-800 leading-tight">${sensor.name}</h3>
+						</div>
                     </div>
                     <span class="text-xs text-sky-600 font-medium mt-2">${sensor.category}</span>
                 `;
