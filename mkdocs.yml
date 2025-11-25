@@ -51,6 +51,7 @@ markdown_extensions:
     - pymdownx.tasklist:
         custom_checkbox: True
     - pymdownx.tilde
+    - md_in_html
 
 extra_css: ["assets/main.css"]
 site_favicon: 'images/favicon.ico'
